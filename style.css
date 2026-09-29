@@ -1,0 +1,335 @@
+/* Reset the browser styling */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* CSS variables (design tokens) so every colour and timing lives in one place */
+:root {
+  /* Raw palette */
+  --almond-cream: #ede1d2;
+  --vanilla-custard: #dfce97;
+  --soft-blossom: #f9b9bc;
+  --strawberry-red: #f44444;
+  --black-cherry: #5f0707;
+
+  /* Roles: what each colour is used for */
+  --bg-main: var(--almond-cream);
+  --bg-band: var(--vanilla-custard);
+  --bg-dark: var(--black-cherry);
+  --bg-card: #f8f1e7;
+  --text-main: var(--black-cherry);
+  --text-muted: #7a3f3f;
+  --text-on-dark: var(--almond-cream);
+  --accent: var(--strawberry-red);
+  --border-color: rgba(95, 7, 7, 0.25);
+
+  /* Fonts */
+  --font-family:
+    system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-code: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Shape and motion */
+  --radius: 10px;
+  --transition-speed: 0.2s;
+
+  /* Keeps content centred at 1100px while backgrounds stay full width */
+  --page-width: 1100px;
+  --gutter: max(1.5rem, calc((100% - var(--page-width)) / 2));
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-family);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* Column flexbox on body makes the footer stick to the bottom on short pages */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* The sticky header would cover the top of a section when jumping to #id links */
+section {
+  scroll-margin-top: 5rem;
+}
+
+/* Styling all the buttons and their classes we have in the html */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* padding: 0.75rem 1.4rem; --> (top and bottom) (left and right) */
+  padding: 0.75rem 1.4rem;
+  font: inherit;
+  font-weight: 650; /* 100-1000 */
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  /* transition lists WHAT animates and for HOW LONG; :hover below triggers it */
+  transition:
+    background-color var(--transition-speed) ease-out,
+    color var(--transition-speed) ease-out,
+    border-color var(--transition-speed) ease-out,
+    transform var(--transition-speed) ease-out;
+}
+
+/* Primary: Black Cherry with cream text for strong contrast on light areas */
+.btn-primary {
+  background-color: var(--black-cherry);
+  color: var(--almond-cream);
+}
+
+/* The state after the transition */
+.btn-primary:hover {
+  background-color: var(--soft-blossom);
+  color: var(--black-cherry);
+  border-color: var(--black-cherry);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Secondary: outlined button, made for the dark hero */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--almond-cream);
+  border-color: rgba(237, 225, 210, 0.5);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(237, 225, 210, 0.12);
+  border-color: var(--almond-cream);
+}
+
+/* Outline: Black Cherry border on light cards */
+.btn-outline {
+  background-color: transparent;
+  color: var(--black-cherry);
+  border-color: var(--black-cherry);
+}
+
+.btn-outline:hover {
+  background-color: var(--vanilla-custard);
+}
+
+.btn-block {
+  display: flex;
+  width: 100%;
+}
+
+.btn-small {
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+}
+
+/* Structure layout of the webpage */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem var(--gutter);
+  /* rgba: r g b go from 0-255, a goes from 0 (transparent) to 1 (solid) */
+  background-color: rgba(237, 225, 210, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem; /* space between the dot and the text without extra HTML */
+  font-family: var(--font-code);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+/* ::before adds a decorative dot without touching the HTML */
+
+.brand-logo::before {
+  content: "";
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  background-color: var(--strawberry-red);
+  animation: pulse 2.4s infinite;
+}
+
+.nav-menu {
+  /* Flexbox lays the links out in a single row */
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color var(--transition-speed) ease-out;
+}
+
+/* Trigger for the transition defined in the previous block */
+.nav-link:hover {
+  color: var(--black-cherry);
+  text-decoration: underline;
+  text-decoration-color: var(--strawberry-red);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+/* Hero section layout */
+
+.hero-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  gap: 1rem;
+  padding: 7rem var(--gutter) 6rem;
+  text-align: center;
+  background-color: var(--bg-dark);
+  color: var(--text-on-dark);
+  /* Three stacked backgrounds: a strawberry glow plus a faint grid, like a */
+  /* monitoring dashboard */
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(244, 68, 68, 0.4), transparent 65%),
+    linear-gradient(rgba(237, 225, 210, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(237, 225, 210, 0.06) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    48px 48px,
+    48px 48px;
+}
+
+/* flex-basis: 100% forces the heading and paragraph onto their own rows, */
+/* so the two buttons share the last row */
+.hero-title {
+  flex-basis: 100%;
+  max-width: 14ch;
+  margin-inline: auto; /* centres a block; needs a max-width to work */
+  font-size: clamp(2.5rem, 6vw, 4.25rem);
+  font-weight: 800;
+}
+
+.hero-subtitle {
+  flex-basis: 100%;
+  max-width: 44ch;
+  margin: 0.5rem auto 1.5rem;
+  color: var(--vanilla-custard);
+  font-size: 1.15rem;
+}
+
+/* On the dark hero the primary button flips to Soft Blossom */
+/* Two classes have higher specificity than .btn-primary alone, so this wins */
+.hero-section .btn-primary {
+  background-color: var(--soft-blossom);
+  color: var(--black-cherry);
+}
+
+.hero-section .btn-primary:hover {
+  background-color: var(--almond-cream);
+  border-color: var(--almond-cream);
+}
+
+.hero-section .btn:focus-visible {
+  outline-color: var(--soft-blossom);
+}
+
+/*
+MAIN PROPERTIES USED FOR 1 DIRECTIONAL LAYOUT (FLEXBOX):
+display
+justify-content
+align-items
+gap
+
+flex-direction
+flex-wrap
+*/
+
+/* Features section and pricing section */
+
+/* Every content section shares the same breathing room */
+.section {
+  padding: 5rem var(--gutter);
+}
+
+/* CSS Grid handles the 2D layout of the cards */
+/* repeat(auto-fit, minmax(260px, 1fr)) means: fit as many columns of at least */
+/* 260px as possible and let them share the leftover space equally */
+.features-section,
+.pricing-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* The heading is also a grid item, so make it span every column: 1 / -1 */
+.section-title {
+  grid-column: 1 / -1;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.feature-card {
+  padding: 1.75rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-left: 6px solid var(--strawberry-red);
+  border-radius: var(--radius);
+  transition:
+    transform var(--transition-speed) ease-out,
+    background-color var(--transition-speed) ease-out;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  background-color: var(--soft-blossom);
+}
+
+.feature-title {
+  margin-bottom: 0.6rem;
+  font-size: 1.25rem;
+}
+
+.feature-desc {
+  color: var(--text-muted);
+  font-size: 0.97rem;
+}
+
+.feature-card:hover .feature-desc {
+  color: var(--black-cherry);
+}
