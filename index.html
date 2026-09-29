@@ -9,28 +9,33 @@
   </head>
   <body>
     <header>
-      <a href="/" class="logo"> DevPulse</a>
+      <a href="#" class="logo"> DevPulse</a>
       <nav aria-label="Main-Navigation">
         <a href="#features">Features</a>
         <a href="#pricing">Pricing</a>
         <a href="#register">Get Started</a>
-        <a href="#register" class="btn-primary">Deploy free Cluster</a>
+        <a href="#register" class="btn-primary">Deploy Free Cluster</a>
       </nav>
     </header>
     <main>
+      <!-- HERO SECTION -->
+
       <section id="hero">
-        <h1>Cloud Infrustructure Built for Developers</h1>
-        <p>Deploy, monitor, and scale your infrustructure with DevPulse.</p>
+        <h1>Cloud Infrastructure Built for Developers</h1>
+        <p>Deploy, monitor, and scale your infrastructure with DevPulse</p>
         <a href="#register" class="btn-primary">Deploy Free Cluster</a>
         <a href="#features" class="btn-secondary">Read Documentation</a>
       </section>
+
+      <!-- FEATURE SECTION -->
+
       <section id="features">
         <h2>Engineered for Platform Reliability</h2>
         <article>
           <h3>Latency Tracking</h3>
           <p>
-            Moniitor infrustructure performance and identify latency across your
-            cloud enviorment
+            Monitor infrastructure performance and identify latency across your
+            cloud environment.
           </p>
         </article>
         <article>
@@ -43,17 +48,20 @@
         <article>
           <h3>Auto Remediation</h3>
           <p>
-            Respond to infrustructure issues quickly and maintain reliable cloud
+            Respond to infrastructure issues quickly and maintain reliable cloud
             services
           </p>
         </article>
       </section>
+
+      <!-- PRICING SECTION -->
+
       <section id="pricing">
-        <h2>Computer Tiers</h2>
+        <h2>Compute Tiers</h2>
         <article>
-          <h3>Developers</h3>
+          <h3>Developer</h3>
           <ul>
-            <li>Developer Cloud Enviorment</li>
+            <li>Developer Cloud Environment</li>
             <li>Infrastructure monitoring</li>
           </ul>
           <a href="#register">Select Developer</a>
@@ -62,7 +70,7 @@
           <span class="badge">Most Popular</span>
           <h3>Pro Cluster</h3>
           <ul>
-            <li>Scaleable compute resources</li>
+            <li>Scalable compute resources</li>
             <li>Advanced infrastructure monitoring</li>
           </ul>
           <a href="#register" class="btn-primary"> Select Pro Cluster </a>
@@ -76,6 +84,60 @@
           <a href="#register">Contact Sales</a>
         </article>
       </section>
+
+      <!-- REGISTER SECTION -->
+
+      <section id="register">
+        <h2>Estimate Your Workload and Request Sandbox Access</h2>
+        <form>
+          <fieldset>
+            <legend>Workload Estimator</legend>
+
+            <label for="node-count">Node Count</label>
+            <input
+              type="number"
+              id="node-count"
+              name="node-count"
+              min="1"
+              max="1000"
+              step="1"
+              required
+            />
+            <label for="log-throughput">Log Throughput</label>
+            <input
+              type="number"
+              id="log-throughput"
+              name="log-throughput"
+              min="100"
+              max="100000"
+              step="100"
+              required
+            />
+          </fieldset>
+
+          <fieldset>
+            <legend>Request Sandbox Details</legend>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" required />
+            <label for="use-case">Use Case</label>
+            <textarea id="use-case" name="use-case"></textarea>
+          </fieldset>
+          <button type="submit">Generate API Keys</button>
+        </form>
+      </section>
     </main>
+    <footer>
+      <p>&copy; 2026 DevPulse Inc. All rights reserved.</p>
+      <nav aria-label="Footer navigation">
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#register">Get Started</a></li>
+        </ul>
+      </nav>
+    </footer>
   </body>
 </html>
