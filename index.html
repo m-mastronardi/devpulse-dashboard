@@ -1,3 +1,4 @@
+Index · HTML
 <!doctype html>
 <html lang="en">
   <head>
@@ -5,49 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DevPulse Cloud Infrastructure</title>
     <!-- Connect css file -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
-      <a href="#" class="logo"> DevPulse</a>
-      <nav aria-label="Main-Navigation">
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#register">Get Started</a>
-        <a href="#register" class="btn-primary">Deploy Free Cluster</a>
+    <header class="site-header">
+      <a href="#" class="brand-logo">DevPulse</a>
+      <nav class="nav-menu" aria-label="Main-Navigation">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#register" class="nav-link">Get Started</a>
+        <a href="#register" class="btn btn-primary btn-small"
+          >Deploy Free Cluster</a
+        >
       </nav>
     </header>
     <main>
       <!-- HERO SECTION -->
 
-      <section id="hero">
-        <h1>Cloud Infrastructure Built for Developers</h1>
-        <p>Deploy, monitor, and scale your infrastructure with DevPulse</p>
-        <a href="#register" class="btn-primary">Deploy Free Cluster</a>
-        <a href="#features" class="btn-secondary">Read Documentation</a>
+      <section id="hero" class="hero-section">
+        <h1 class="hero-title">Cloud Infrastructure Built for Developers</h1>
+        <p class="hero-subtitle">
+          Deploy, monitor, and scale your infrastructure with DevPulse
+        </p>
+        <a href="#register" class="btn btn-primary">Deploy Free Cluster</a>
+        <a href="#features" class="btn btn-secondary">Read Documentation</a>
       </section>
 
       <!-- FEATURE SECTION -->
 
-      <section id="features">
-        <h2>Engineered for Platform Reliability</h2>
-        <article>
-          <h3>Latency Tracking</h3>
-          <p>
+      <section id="features" class="section features-section">
+        <h2 class="section-title">Engineered for Platform Reliability</h2>
+        <article class="feature-card">
+          <h3 class="feature-title">Latency Tracking</h3>
+          <p class="feature-desc">
             Monitor infrastructure performance and identify latency across your
             cloud environment.
           </p>
         </article>
-        <article>
-          <h3>Log Aggregation</h3>
-          <p>
+        <article class="feature-card">
+          <h3 class="feature-title">Log Aggregation</h3>
+          <p class="feature-desc">
             Centralize infrastructure logs to simplify monitoring and
             troubleshooting
           </p>
         </article>
-        <article>
-          <h3>Auto Remediation</h3>
-          <p>
+        <article class="feature-card">
+          <h3 class="feature-title">Auto Remediation</h3>
+          <p class="feature-desc">
             Respond to infrastructure issues quickly and maintain reliable cloud
             services
           </p>
@@ -56,58 +61,70 @@
 
       <!-- PRICING SECTION -->
 
-      <section id="pricing">
-        <h2>Compute Tiers</h2>
-        <article>
-          <h3>Developer</h3>
-          <ul>
+      <section id="pricing" class="section pricing-section">
+        <h2 class="section-title">Compute Tiers</h2>
+        <article class="pricing-card">
+          <h3 class="tier-name">Developer</h3>
+          <ul class="tier-features">
             <li>Developer Cloud Environment</li>
             <li>Infrastructure monitoring</li>
           </ul>
-          <a href="#register">Select Developer</a>
+          <a href="#register" class="btn btn-outline btn-block"
+            >Select Developer</a
+          >
         </article>
-        <article aria-current="true">
-          <span class="badge">Most Popular</span>
-          <h3>Pro Cluster</h3>
-          <ul>
+        <article class="pricing-card featured" aria-current="true">
+          <span class="popular-badge">Most Popular</span>
+          <h3 class="tier-name">Pro Cluster</h3>
+          <ul class="tier-features">
             <li>Scalable compute resources</li>
             <li>Advanced infrastructure monitoring</li>
           </ul>
-          <a href="#register" class="btn-primary"> Select Pro Cluster </a>
+          <a href="#register" class="btn btn-primary btn-block">
+            Select Pro Cluster
+          </a>
         </article>
-        <article>
-          <h3>Enterprise</h3>
-          <ul>
+        <article class="pricing-card">
+          <h3 class="tier-name">Enterprise</h3>
+          <ul class="tier-features">
             <li>Enterprise infrastructure</li>
             <li>Custom deployment options</li>
           </ul>
-          <a href="#register">Contact Sales</a>
+          <a href="#register" class="btn btn-outline btn-block"
+            >Contact Sales</a
+          >
         </article>
       </section>
 
       <!-- REGISTER SECTION -->
 
-      <section id="register">
-        <h2>Estimate Your Workload and Request Sandbox Access</h2>
-        <form>
-          <fieldset>
-            <legend>Workload Estimator</legend>
+      <section id="register" class="section register-section">
+        <h2 class="section-title">
+          Estimate Your Workload and Request Sandbox Access
+        </h2>
+        <form class="lead-form">
+          <fieldset class="form-group">
+            <legend class="form-legend">Workload Estimator</legend>
 
-            <label for="node-count">Node Count</label>
+            <label for="node-count" class="form-label">Node Count</label>
             <input
               type="number"
               id="node-count"
               name="node-count"
+              class="form-control"
               min="1"
               max="1000"
               step="1"
               required
             />
-            <label for="log-throughput">Log Throughput</label>
+            <label for="log-throughput" class="form-label"
+              >Log Throughput</label
+            >
             <input
               type="number"
               id="log-throughput"
               name="log-throughput"
+              class="form-control"
               min="100"
               max="100000"
               step="100"
@@ -115,24 +132,42 @@
             />
           </fieldset>
 
-          <fieldset>
-            <legend>Request Sandbox Details</legend>
+          <fieldset class="form-group">
+            <legend class="form-legend">Request Sandbox Details</legend>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
-            <label for="company">Company</label>
-            <input type="text" id="company" name="company" required />
-            <label for="use-case">Use Case</label>
-            <textarea id="use-case" name="use-case"></textarea>
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-control"
+              required
+            />
+            <label for="company" class="form-label">Company</label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              class="form-control"
+              required
+            />
+            <label for="use-case" class="form-label">Use Case</label>
+            <textarea
+              id="use-case"
+              name="use-case"
+              class="form-control"
+            ></textarea>
           </fieldset>
-          <button type="submit">Generate API Keys</button>
+          <button type="submit" class="btn btn-primary btn-block">
+            Generate API Keys
+          </button>
         </form>
       </section>
     </main>
-    <footer>
-      <p>&copy; 2026 DevPulse Inc. All rights reserved.</p>
-      <nav aria-label="Footer navigation">
-        <ul>
+    <footer class="site-footer">
+      <p class="footer-copy">&copy; 2026 DevPulse Inc. All rights reserved.</p>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <ul class="footer-links">
           <li><a href="#features">Features</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="#register">Get Started</a></li>
