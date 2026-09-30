@@ -333,3 +333,96 @@ flex-wrap
 .feature-card:hover .feature-desc {
   color: var(--black-cherry);
 }
+/* Pricing cards */
+
+.pricing-section {
+  align-items: stretch; /* every card is as tall as the tallest one */
+  background-color: var(--bg-band); /* Vanilla Custard band */
+}
+
+.pricing-card {
+  /* position: relative makes this card the reference point for the */
+  /* absolutely positioned "Most Popular" badge */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 2.25rem 1.75rem 1.75rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  transition:
+    transform var(--transition-speed) ease-out,
+    border-color var(--transition-speed) ease-out;
+}
+
+.pricing-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--black-cherry);
+}
+
+.tier-name {
+  margin-bottom: 1.25rem;
+  font-size: 1.5rem;
+}
+
+.tier-features {
+  list-style: none;
+  margin-bottom: 1.75rem;
+  flex-grow: 1; /* pushes the button to the bottom so all three line up */
+}
+
+/* single colon (:) reacts to user interaction */
+/* double colon (::) is content generated after rendering */
+.tier-features li {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.tier-features li::before {
+  content: "\2713"; /* check mark */
+  color: var(--strawberry-red);
+  font-weight: 800;
+}
+
+/* Affordance (extra visual weight for the recommended tier) */
+/* pricing-card AND featured */
+.pricing-card.featured {
+  background-color: var(--almond-cream);
+  border: 3px solid var(--strawberry-red);
+  box-shadow: 0 0 0 6px rgba(244, 68, 68, 0.18);
+  transform: scale(1.04);
+}
+
+.pricing-card.featured:hover {
+  transform: scale(1.04) translateY(-3px);
+  border-color: var(--strawberry-red);
+}
+
+.pricing-card.featured .tier-features li {
+  color: var(--black-cherry);
+  border-bottom-color: rgba(95, 7, 7, 0.3);
+}
+
+/* Cherry button on the pink card; hover flips to cream */
+.pricing-card.featured .btn-primary:hover {
+  background-color: var(--almond-cream);
+  color: var(--black-cherry);
+}
+
+.popular-badge {
+  position: absolute; /* positioned relative to the card (position: relative) */
+  top: -0.9rem;
+  left: 50%;
+  transform: translateX(-50%); /* pulls the badge back by half its own width */
+  padding: 0.2rem 0.9rem;
+  background-color: var(--black-cherry);
+  color: var(--almond-cream);
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  border-radius: 999px;
+}
