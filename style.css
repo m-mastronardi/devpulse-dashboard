@@ -426,3 +426,133 @@ flex-wrap
   white-space: nowrap;
   border-radius: 999px;
 }
+/* Register section and form */
+
+.lead-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 640px;
+  /* margin: 0 auto only works when a max-width is set */
+  margin: 2rem auto 0;
+  padding: 2rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem 1.25rem 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+}
+
+.form-legend {
+  padding: 0 0.6rem;
+  color: var(--black-cherry);
+  font-weight: 800;
+}
+
+.form-label {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Adds a red * after any label whose next sibling input is required */
+/* x + y selects the immediate sibling; :has() looks ahead at it */
+.form-label:has(+ .form-control:required)::after {
+  content: " *";
+  color: var(--strawberry-red);
+  font-weight: 800;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  background-color: #fff;
+  color: var(--black-cherry);
+  font: inherit;
+  border: 1px solid rgba(95, 7, 7, 0.45);
+  border-radius: 8px;
+  transition:
+    border-color var(--transition-speed) ease-out,
+    box-shadow var(--transition-speed) ease-out;
+}
+
+textarea.form-control {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+.form-control:hover {
+  border-color: var(--black-cherry);
+}
+
+.form-control:focus-visible {
+  outline: none;
+  border-color: var(--strawberry-red);
+  /* x-offset y-offset blur spread colour */
+  box-shadow: 0 0 0 4px rgba(244, 68, 68, 0.28);
+}
+
+/* Native HTML validation feedback; only shows after the user has interacted */
+.form-control:user-invalid {
+  border-color: var(--strawberry-red);
+  border-width: 2px;
+  background-color: rgba(249, 185, 210, 0.25);
+}
+
+/* Footer */
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem var(--gutter);
+  background-color: var(--bg-dark);
+  color: var(--vanilla-custard);
+  font-size: 0.875rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+/* x a (whitespace): everything below that node */
+/* x > a: only the immediate child */
+/* x + y: immediate sibling */
+/* x ~ y: all siblings after x that match y */
+
+.footer-links a {
+  transition: color var(--transition-speed) ease-out;
+}
+
+.footer-links a:hover {
+  color: var(--soft-blossom);
+}
+
+.footer-links a:focus-visible {
+  outline-color: var(--soft-blossom);
+}
+
+/* Respect people who ask their device for less motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .brand-logo::before {
+    animation: none;
+  }
+
+  * {
+    transition: none !important;
+  }
+}
